@@ -1,9 +1,4 @@
 # coding=utf-8
-# 
-# 20171127 Thom Janssen 
-# Do not distribute.
-# 
-
 from robofab import *
 from mojo.UI import *
 from mojo.events import addObserver, removeObserver
@@ -31,7 +26,9 @@ from mojo.events import postEvent
 
 event = "drawBackground" 
 
-
+import morflib, morfdsd
+reload(morflib)
+reload(morfdsd)
 from morflib import GetMorfGlyph 
 from morfdsd import MakeDSD 
 
@@ -54,7 +51,7 @@ class GlyphMorf(BaseWindowController):
 		y=2
 		self.w.recipeTitle = TextBox((2,y,-0,15), "recipe:", sizeStyle='mini')
 		y+=15
-		self.w.recipe = PopUpButton((10,y,-10,22), self.font.lib['morf']['recipes'].keys(), callback=self.recipeCallback)
+		self.w.recipe = PopUpButton((10,y,-10,22), self.font.lib['morf']['recipes'], callback=self.recipeCallback)
 		y+=30
 		self.w.newRecipe = SquareButton((10,y,30,30),u"🌟",callback=self.newRecipe)
 		self.w.delRecipe = SquareButton((50,y,30,30),u"⛔",callback=self.delRecipe)
@@ -106,8 +103,21 @@ class GlyphMorf(BaseWindowController):
 		self.setUpBaseWindowBehavior()
 		self.w.open()
 		self.updateView(None)
+		
+		#self.hasLib()
 
 		
+	# def hasLib(self):
+	# 	if 'morf' in self.font.lib.keys():
+	# 		if 'recipes' in self.font.lib['morf'].keys():
+	# 			self.w.recipe.setItems(self.font.lib['morf']['recipes'])
+	# 			return True
+	# 		else:
+	# 			self.w.recipe.setItems([])
+	# 	else:
+	# 		self.w.recipe.setItems([])
+				
+	
 	def getUfo(self, sinder):
 		ufoPath = getFile()[0]
 		self.ufo = OpenFont(ufoPath, showUI=False)
@@ -213,23 +223,24 @@ class GlyphMorf(BaseWindowController):
 
 
 	def getDefaultValues(self):
-		self.currentRecipe = self.font.lib['morf']['recipes'].keys()[self.w.recipe.get()]
-		defValDict = self.font.lib['morf']['recipes'][self.currentRecipe]['default']
-		self.widthBy=defValDict['widthBy']
-		self.heightBy=defValDict['heightBy']
-		self.weightByX=defValDict['weightByX']
-		self.weightByY=defValDict['weightByY']
-		self.factor=defValDict['factor']
+		if self.w.recipe.get() != -1:
+			self.currentRecipe = self.font.lib['morf']['recipes'].keys()[self.w.recipe.get()]
+			defValDict = self.font.lib['morf']['recipes'][self.currentRecipe]['default']
+			self.widthBy=defValDict['widthBy']
+			self.heightBy=defValDict['heightBy']
+			self.weightByX=defValDict['weightByX']
+			self.weightByY=defValDict['weightByY']
+			self.factor=defValDict['factor']
 
 	def setDefaultValuesToSliders(self, sender):
-		self.getDefaultValues()
-		self.w.width.set(self.widthBy)
-		self.w.height.set(self.heightBy)
-		self.w.weightx.set(self.weightByX)
-		self.w.weighty.set(self.weightByY)
-		self.w.centerr.set(self.factor)
-		self.update(None)
-		self.updateView(None)
+			self.getDefaultValues()
+			self.w.width.set(self.widthBy)
+			self.w.height.set(self.heightBy)
+			self.w.weightx.set(self.weightByX)
+			self.w.weighty.set(self.weightByY)
+			self.w.centerr.set(self.factor)
+			self.update(None)
+			self.updateView(None)
 
 	def setDefaultRecipe(self, sender):
 		
@@ -383,10 +394,19 @@ class GlyphMorf(BaseWindowController):
 			
 			
 	def prepareFont(self,curfont):
+		"""
+		make 'morf' in lib and make first 'Neutral' recipe
+		"""
 		if 'morf' not in self.font.lib:
 				self.font.lib['morf'] = {}
 		if 'recipes' not in self.font.lib['morf'].keys():
 			self.font.lib['morf']['recipes'] = {} #dict {"RecName":{defaultValues}}
+			self.font.lib['morf']['recipes']["Neutral"] = {'default':{
+				'widthBy':1,
+				'heightBy':1,
+				'weightByX': 1,
+				'weightByY': 1,
+				'factor': .5,}} 
 
 	def glyphChanged(self, info):
 		#self.mainFunction(info)
