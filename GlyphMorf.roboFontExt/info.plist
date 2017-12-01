@@ -8,11 +8,18 @@
 			<key>path</key>
 			<string>GlyphMorf.py</string>
 			<key>preferredName</key>
-			<string>GlyphMorf Observer</string>
+			<string>Observer</string>
 			<key>shortKey</key>
 			<string></string>
 		</dict>
-
+		<dict>
+			<key>path</key>
+			<string>License.py</string>
+			<key>preferredName</key>
+			<string>License</string>
+			<key>shortKey</key>
+			<string></string>
+		</dict>
 	</array>
 	<key>developer</key>
 	<string>Thom Janssen</string>
@@ -33,6 +40,6 @@
 	<key>timeStamp</key>
 	<real>1511525002.7945549</real>
 	<key>version</key>
-	<string>1.1</string>
+	<string>1.2</string>
 </dict>
 </plist>

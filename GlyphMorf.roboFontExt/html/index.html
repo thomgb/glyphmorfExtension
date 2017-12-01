@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>GlyphMorfDoc-1</title>
+
 
 
 <style type="text/css">
@@ -336,30 +336,35 @@ kbd {
 
 <p>Thom Janssen 2017</p>
 
-<h2 id="toc_1">Requirements</h2>
+<h2 id="toc_1">License</h2>
+
+<p>Downloading GlyphMorf Extension is free. Using GlyphMorf is a professional environment is not. Please <a href="http://hallotype.nl/support/">visit my website and make a choice.</a></p>
+
+<h2 id="toc_2">Requirements</h2>
 
 <ul>
 <li>RoboFont </li>
 <li>DrawBot Extension</li>
+<li>DesignSpaceDocument Extension</li>
 <li>This Extension :)</li>
 </ul>
 
-<h2 id="toc_2">How</h2>
+<h2 id="toc_3">How</h2>
 
 <p>GlyphMorf analyses the glyph drawing and extract parameters out of it. By redrawing the glyph with different parameters you get different new glyphs / fonts. </p>
 
-<h2 id="toc_3">Drawing conventions for GlyphMorf</h2>
+<h2 id="toc_4">Drawing conventions for GlyphMorf</h2>
 
 <p>The drawing should be so that every point on the contour can be paired with an other point in the same contour on the other side of the stem/stroke. This means that all contours must have an even number of points. The starting point marks the beginning of the inner or outer part of the contour, depends a bit on the design. See image, the selected (orange) segments show the first half of the contours. 
 <img src="images/startPoints.png" alt="startPoints"></p>
 
-<h2 id="toc_4">Recipes</h2>
+<h2 id="toc_5">Recipes</h2>
 
 <p>Recipes are the way to store different transformations in the font and glyphs. The font known the names of recipes and the default values of the parameters. A glyph can have a own set of parameters for a recipe but this is optional. </p>
 
-<h2 id="toc_5">GlyphMorf content</h2>
+<h2 id="toc_6">GlyphMorf content</h2>
 
-<h4 id="toc_6">▶️ The Observer</h4>
+<h4 id="toc_7">▶️ The Observer</h4>
 
 <p>The main tools is the observer which shows how the glyph transforms. 
 <img src="images/GM-ObserverUI.png" alt="Observer UI"></p>
@@ -392,31 +397,31 @@ kbd {
 <li>Generate/open the current recipe.</li>
 </ul>
 
-<h2 id="toc_7">Coming up:</h2>
+<h2 id="toc_8">Coming up</h2>
 
-<h4 id="toc_8">🔜 MakeFont</h4>
+<h4 id="toc_9">🔜 MakeFont</h4>
 
 <p>Small dialog with simple purpose: choose a recipe and some additional options and make a font/ufo.</p>
 
-<h4 id="toc_9">🔜 MorfSpaceCenter</h4>
+<h4 id="toc_10">🔜 MorfSpaceCenter</h4>
 
 <p>A SpaceCenter where you see the morfed glyphs in action. Choose a recipe or pull some sliders. Also here it is possible to make recipes and, get and set values to parameters.</p>
 
-<h4 id="toc_10">🔜 MorfGlyphsInterpolationAnimation</h4>
+<h4 id="toc_11">🔜 MorfGlyphsInterpolationAnimation</h4>
 
 <p>A DrawBot script with an extra dialog. It loads the recipes of the font, you can set some new ones too. order the recipes you want and set the frame duration and how many frames per interpolation from one recipe to the next. Set them colours! Gif animation.</p>
 
-<h2 id="toc_11">TODO:</h2>
+<h2 id="toc_12">TODO</h2>
 
 <ul>
-<li>also RF2</li>
+<li><del>also RoboFont2</del>  ✔︎ v1.1</li>
 <li>better support for diagonals</li>
 <li>make it all smarter so that drawing conventions are less important</li>
 <li>some sort of linked relation between contours (this pt of this c is always at this relative/absolute position of that pt of that c) (skill level 💯)</li>
 <li>spacing?</li>
 </ul>
 
-<h2 id="toc_12">To be clear:</h2>
+<h2 id="toc_13">To be clear</h2>
 
 <p>As said earlier this tools is not an all-in-one magic thing. Results depends on your drawings and what you do with GlyphMorf. </p>
 
@@ -432,10 +437,6 @@ kbd {
 <ul>
 <li>math</li>
 </ul>
-
-<h2 id="toc_13">License</h2>
-
-<p>Downloading GlyphMorf Extension is free. Using GlyphMorf is a professional environment is not. Please <a href="http://hallotype.nl/support/">visit my website and make a choice.</a></p>
 
 
 

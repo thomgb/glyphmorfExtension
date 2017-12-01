@@ -14,6 +14,7 @@ Downloading GlyphMorf Extension is free. Using GlyphMorf is a professional envir
 
 - RoboFont 
 - DrawBot Extension
+- DesignSpaceDocument Extension
 - This Extension :)
 
 ## How
@@ -73,7 +74,7 @@ A DrawBot script with an extra dialog. It loads the recipes of the font, you can
 
 ## TODO
 
-- also RF2
+- <del>also RoboFont2</del>  ✔︎ v1.1
 - better support for diagonals
 - make it all smarter so that drawing conventions are less important
 - some sort of linked relation between contours (this pt of this c is always at this relative/absolute position of that pt of that c) (skill level 💯)
